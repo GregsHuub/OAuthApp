@@ -1,0 +1,53 @@
+plugins {
+    id 'java'
+    id 'com.gradle.build-scan' version '2.0.2'
+    id 'org.springframework.boot' version '2.2.2.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+}
+
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //SPRING BOOT DEPEND
+    implementation 'org.springframework.boot:spring-boot-dependencies:2.2.2.RELEASE'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web'
+    compile group: 'org.springframework.boot', name: 'spring-boot-devtools', version: '2.2.2.RELEASE'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    //LOMBOK
+    compileOnly 'org.projectlombok:lombok:1.18.10'
+    annotationProcessor 'org.projectlombok:lombok:1.18.10'
+    //THYMELEAF
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+    compile group: 'org.thymeleaf.extras', name: 'thymeleaf-extras-springsecurity5', version: '3.0.4.RELEASE'
+    compile group: 'nz.net.ultraq.thymeleaf', name: 'thymeleaf-layout-dialect', version: '2.4.1'
+
+
+    //TEST
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    //SECURITY
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.2.2.RELEASE'
+    testCompile group: 'org.springframework.security', name: 'spring-security-test', version: '5.2.1.RELEASE'
+    //
+    //SQL CONNECTOR
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.18'
+    components {
+        withModule('org.springframework:spring-beans') {
+            allVariants {
+                withDependencyConstraints {
+                    it.findAll { it.name == 'snakeyaml' }.each { it.version { strictly '1.19' } }
+                }
+            }
+        }
+    }
+}
+
+

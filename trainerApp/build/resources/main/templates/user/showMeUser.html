@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/index.css}">
+    <style>
+        .two {
+        color: brown}
+    </style>
+
+</head>
+<body>
+<h1 style="color: red">zwroc user</h1>
+<h2 class="one">zwroc userONE</h2>
+<h2 class="two">zwroc userTWO</h2>
+
+
+<tbody>
+<th:block th:each="user : ${listOfUsers}">
+<tr class="one">
+
+    <div class="one"><td th:text="${user.name}"></td></div>
+    <td th:text="${user.lastName}"></td>
+    <td th:text="${user.email}"></td>
+</tr>
+</th:block>
+</tbody>
+
+</body>
+</html>

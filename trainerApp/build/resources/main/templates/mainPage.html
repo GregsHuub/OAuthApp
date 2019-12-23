@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style="border: 1px solid black">
+    <span sec:authorize="isAnonymous()">
+                                <span>Witaj nieznajomy </span>
+                            </span>
+    <span sec:authorize="isAuthenticated()">
+                                Witaj <span style="color: red" sec:authentication="name"></span>
+                            </span>
+</div>
+Authenticated username:
+<div sec:authentication="name"></div>
+Authenticated user roles:
+<div sec:authentication="principal.authorities"></div>
+<div>
+    <a th:href="@{/user/login}">Zaloguj</a>
+</div>
+<div sec:authorize="hasRole('USER')">Wszystko w tym divie widoczne tylko dla USER</div>
+<div sec:authorize="hasRole('ADMIN')">Wszystko w tym divie widoczne tylko dla ADMIN</div>
+<div sec:authorize="hasRole('TRAINER')">Wszystko w tym divie widoczne tylko dla TRAINER</div>
+<div sec:authorize="isAuthenticated()">
+    Zawartosc diva widoczna tyltko dla osob zalogowanych(obojetnie jakie konto)
+</div>
+
+</body>
+</html>

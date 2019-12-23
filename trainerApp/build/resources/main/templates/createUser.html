@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>UTWORZ MNIE DO CHUJA WAFLA</h1>
+
+<form action="#" th:action="@{/user/newUser/save}" th:object="${user}" method="post">
+    <div>
+        <input type="text" th:field="*{name}" placeholder="imie">
+    </div>
+    <div>
+        <input type="text" th:field="*{lastName}" placeholder="lastName">
+    </div>
+    <div>
+        <input type="email" th:field="*{email}" placeholder="email tutaj">
+    </div>
+    <div>
+        <input type="password" th:field="*{password}" placeholder="password">
+    </div>
+    <div>
+        <button type="submit" style="border: 1px solid black">CLICK ON ME!</button>
+    </div>
+</form>
+
+
+</body>
+</html>
